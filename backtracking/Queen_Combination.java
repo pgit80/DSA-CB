@@ -35,7 +35,7 @@ public class Queen_Combination {
 			{
 				board[i]=true;// put a queen
 				// for combination we just need to run the next recursion from next queen
-				combination(board, q, qpsf+1, ans+"b"+i+"q"+qpsf+" ", idx+1);
+				combination(board, q, qpsf+1, ans+"b"+i+"q"+qpsf+" ", i+1);
 				
 				board[i]=false; // remove the queen for next recursion
 				// this is explicit undo call for backtracking

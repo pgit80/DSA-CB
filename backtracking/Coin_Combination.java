@@ -1,5 +1,6 @@
 package backtracking;
 
+
 /*
  ****************************************************************************
  * We are given infinite supplies of some coins of x, y and z amount, 
@@ -22,7 +23,27 @@ public class Coin_Combination {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] coins = {1, 2};
+		int curr = 0;
+		int target = 4;
+		String ans = "";
+		coinCombination(coins, target, ans, 0);
 	}
-
+	
+	static void coinCombination(int[] coins, int amount, String ans, int idx){
+		if(amount==0) {
+			System.out.println(ans);
+			return;
+		}
+		for (int i = idx; i < coins.length; i++) {
+			if(coins[i]<=amount && coins[i]!=-1) {
+//				amount-=coins[i];
+				// here we'll keep track to send the current index to
+				// run the recursion from current coin only
+				coinCombination(coins, amount-coins[i], ans+coins[i], i);
+//				amount+=coins[i];
+				
+			}
+		}
+	}
 }
