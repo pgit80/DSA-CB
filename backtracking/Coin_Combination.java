@@ -22,9 +22,9 @@ package backtracking;
 public class Coin_Combination {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] coins = {1, 2};
-		int curr = 0;
+		// int curr = 0;
 		int target = 4;
 		String ans = "";
 		coinCombination(coins, target, ans, 0);

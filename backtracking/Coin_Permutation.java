@@ -21,9 +21,9 @@ package backtracking;
 public class Coin_Permutation {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] coins = {1, 2};
-		int curr = 0;
+		// int curr = 0;
 		int target = 3;
 		String ans = "";
 //		coinPermut(coins, curr, target, ans);
