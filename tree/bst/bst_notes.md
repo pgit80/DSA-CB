@@ -7,3 +7,4 @@
 - bst me element searching ka time bt se bahut km lagta hai.
 - `O(log n)` lagta hai (normal case)
 - but agar bst `skewed` ho to fir `O(n)` lagta hai
+- if `inorder` traversal of any tree is in `ascending` order of node values then that tree is a `bst`
