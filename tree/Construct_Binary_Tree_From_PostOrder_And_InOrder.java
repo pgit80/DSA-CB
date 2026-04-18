@@ -31,6 +31,7 @@ public class Construct_Binary_Tree_From_PostOrder_And_InOrder {
             // we need to search preorder node in inorder array and then create left-right
             // childern
             int idx = search(in, ilo, ihi, post[phi]);
+            // we need to calculate the net elements in the inorder array to create new area for search in the tree and create left and right tree.
             int nel = idx - ilo;
             node.left = create(post, in, ilo, idx - 1, plo, plo + nel - 1);
             node.right = create(post, in, idx + 1, ihi, plo + nel, phi - 1);
