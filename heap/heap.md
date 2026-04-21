@@ -29,4 +29,15 @@
     - We'll use an array list to store data
     - add elements to last of list and keep checkin for conditions
     - if condition of min/max heap violates then swap the element with its parent as per the formula (`up-heapify` process), until it follows the max/min heap condition. 
+    - in java by default we get a Min heap, we can pass `Collections.reverseOrder()` to make it a Max heap.
+    - Priority queue methods
+        - __q.add()__- add element to the heap and up-heapify according to rules
+        - __q.remove()__- remove the top element(root) from the heap
+        - __q.peek()__- 
+            - **Purpose**: Retrieves the head (highest-priority element)
+            - Does NOT remove the element from the queue
+            - Returns null if the queue is empty
+        - **q.poll()**
+            - **Purpose**: Retrieves and removes the head element
+            - Returns null if the queue is empty
 
