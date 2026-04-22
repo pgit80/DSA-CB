@@ -1,5 +1,8 @@
 package heap;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Merge_K_Sorted_Lists {
     /*
      * LC-23
@@ -42,8 +45,27 @@ public class Merge_K_Sorted_Lists {
         // use dummy node to capture answer list
         // then remove the top of heap and make it next of dummy node.
         // and add next min element from all the available lists and repeat the process
+        // here we added custom comparator for comparing listnode address values
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+
+                return o1.val - o2.val;
+            }
+        });
+        for (ListNode l : lists) {
+            if (l != null)
+                pq.add(l);
+        }
         ListNode dummy = new ListNode(0, null);
-        
+        while (!pq.isEmpty()) {
+            ListNode rv = pq.remove();
+            dummy.next = rv;
+            dummy = dummy.next;
+            if (rv.next != null) {
+                pq.add(rv.next);
+            }
+        }
         return dummy.next;
     }
 }
