@@ -10,4 +10,6 @@
 - Data stored in random order
 - Operation in Constant time.
 - It is like arraylist but it doesn't store duplicate values
-- 
+---
+### TreeMap
+- TC= logn
