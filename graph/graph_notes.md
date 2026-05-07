@@ -31,4 +31,7 @@
         - `Space Time Trade-Off`
     - So now, we want to acieve some representation which balances the space-time tradeoff.
     - ### HashMap Representation
-        - Here we'll create a Hashmap<Integer, Hashmap> to represent the graph. Where Internal haspmap further store the connected nodes. [See here](graph.tldr)
+        - Here we'll create a Hashmap<Integer, Hashmap<Integer, Integer>> to represent the graph. Where Internal haspmap further store the connected(neighbour) nodes. [See here](graph.tldr)
+#### What is Complete Graph?
+- In Complete graph there exists an direct edge between any two vertices
+* How many edges there are in total in a complete graph? `N*(N-1)/2` if there is `N vertices` in the graph
