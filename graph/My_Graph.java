@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class My_Graph {
     private HashMap<Integer, HashMap<Integer, Integer>> map;
@@ -66,5 +67,46 @@ public class My_Graph {
         for (int key : map.keySet()) {
             System.out.println(key + "-->" + map.get(key));
         }
+    }
+
+    // method to check if at least one path exists beetween two vertices
+    // we will use recursion to find at least one valid path between source and
+    // destination vertex.
+    // in another way we can think of making our source as destination node.
+    // keep asking the neighbours to find the path recursively.
+    public boolean hasPath(int src, int dst, HashSet<Integer> visited) {
+
+        if (src == dst)
+            return true;
+        // we'll use set to keep track of visited nodes
+        visited.add(src);
+        for (int nbrs : map.get(src).keySet()) {
+            if (!visited.contains(nbrs)) {
+                boolean ans = hasPath(nbrs, dst, visited);
+                if (ans)
+                    return ans;
+            }
+        }
+        // this below line is not needed but a good practice
+        visited.remove(src);
+        return false;
+    }
+
+    // method to print all path of a graph
+    public void printAllPath(int src, int dst, HashSet<Integer> visited, String path){
+        if (src == dst){
+            System.out.println(path);
+            return ;
+        }
+        // we'll use set to keep track of visited nodes
+        visited.add(src);
+
+        for (int nbrs : map.get(src).keySet()) {
+            if (!visited.contains(nbrs)) {
+                printAllPath(nbrs , dst, visited, path+src);
+            }
+        }
+        // this below line is not needed but a good practice
+        visited.remove(src);
     }
 }
