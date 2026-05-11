@@ -1,7 +1,13 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
 
 public class My_Graph {
     private HashMap<Integer, HashMap<Integer, Integer>> map;
@@ -93,20 +99,149 @@ public class My_Graph {
     }
 
     // method to print all path of a graph
-    public void printAllPath(int src, int dst, HashSet<Integer> visited, String path){
-        if (src == dst){
+    public void printAllPath(int src, int dst, HashSet<Integer> visited, String path) {
+        if (src == dst) {
             System.out.println(path);
-            return ;
+            return;
         }
         // we'll use set to keep track of visited nodes
         visited.add(src);
 
         for (int nbrs : map.get(src).keySet()) {
             if (!visited.contains(nbrs)) {
-                printAllPath(nbrs , dst, visited, path+src);
+                printAllPath(nbrs, dst, visited, path + src);
             }
         }
         // this below line is not needed but a good practice
         visited.remove(src);
+    }
+
+    public boolean bfs(int src, int dst) {
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        // add 1 vertex to start operation
+        q.add(src);
+        while (!q.isEmpty()) {
+            // 1. remove the current vertex from the queue
+            int cv = q.remove();
+            // 2. ignore if already in the set, also detects cycle
+            if (visited.contains(cv)) {
+                continue; // go to next iteration
+            }
+            // 3. mark visited
+            visited.add(cv);
+            // 4. self work
+            if (cv == dst) {
+                return true;
+            }
+            // 5. add the unvisited nbrs to the queue
+            for (int nbrs : map.get(cv).keySet())
+                if (!visited.contains(nbrs))
+                    q.add(nbrs);
+
+        }
+        // after this loop there is no path
+        return false;
+    }
+
+    public boolean dfs(int src, int dst) {
+        HashSet<Integer> visited = new HashSet<>();
+        Stack<Integer> st = new Stack<>();
+        // add 1 vertex to start operation
+        st.push(src);
+        while (!st.isEmpty()) {
+            // 1. remove the current vertex from the stack
+            int cv = st.pop();
+            // 2. ignore if already in the set, also detects cycle
+            if (visited.contains(cv)) {
+                continue; // go to next iteration
+            }
+            // 3. mark visited
+            visited.add(cv);
+            // 4. self work
+            if (cv == dst) {
+                return true;
+            }
+            // 5. add the unvisited nbrs to the stack
+            for (int nbrs : map.get(cv).keySet())
+                if (!visited.contains(nbrs))
+                    st.push(nbrs);
+
+        }
+        // after this loop there is no path
+        return false;
+    }
+
+    // breadth first traversal
+    // 1. we need a list of all the vertices to start
+    // because bft can encounter disconnected graphs also
+
+    public void bft() {
+        Set<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        // add 1 vertex to start operation
+        // we used this loop in case of disconnected graphs
+        for (int cv : map.keySet()) {
+            if (visited.contains(cv)) {
+                continue;
+            }
+            q.add(cv);
+            while (!q.isEmpty()) {
+                // 1. remove the current vertex from the queue
+                cv = q.remove();
+                // 2. ignore if already in the set, also detects cycle
+                if (visited.contains(cv)) {
+                    continue; // go to next iteration
+                }
+                // 3. mark visited
+                visited.add(cv);
+                // 4. self work
+                System.out.print(cv + "-");
+                // 5. add the unvisited nbrs to the queue
+                for (int nbrs : map.get(cv).keySet()) {
+                    if (!visited.contains(nbrs)) {
+                        q.add(nbrs);
+                    }
+                }
+
+            }
+        }
+        // after this loop there is no path
+        System.out.println();
+    }
+
+    // depth first traersal
+    public void dft(){
+        Set<Integer> visited = new HashSet<>();
+        Stack<Integer> st = new Stack<>();
+        // add 1 vertex to start operation
+        // we used this loop in case of disconnected graphs
+        for (int cv : map.keySet()) {
+            if (visited.contains(cv)) {
+                continue;
+            }
+            st.push(cv);
+            while (!st.isEmpty()) {
+                // 1. remove the current vertex from the queue
+                cv = st.pop();
+                // 2. ignore if already in the set, also detects cycle
+                if (visited.contains(cv)) {
+                    continue; // go to next iteration
+                }
+                // 3. mark visited
+                visited.add(cv);
+                // 4. self work
+                System.out.print(cv + "-");
+                // 5. add the unvisited nbrs to the queue
+                for (int nbrs : map.get(cv).keySet()) {
+                    if (!visited.contains(nbrs)) {
+                        st.add(nbrs);
+                    }
+                }
+
+            }
+        }
+        // after this loop there is no path
+        System.out.println();
     }
 }
