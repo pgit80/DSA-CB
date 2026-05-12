@@ -100,3 +100,27 @@
         - Add to priority queue.
     - We can be asked the cost of the path and path as well.
     - Dijkstra algo can also detect cycle in the graph but take more resources than BFT/DFT
+
+## Spanning Tree
+- A spanning tree is subset of graph which has all the vertices covered with minimum possible edges.
+- It is a tree so it don't has any cycle nor it is disconnected.
+- [See Example](graph.tldr)
+- Properties:
+    - A connected graph can have more than one spanning tree. but every spanning tree will have same no. of nodes and edges.
+    - Spanning tree has (n-1) edges if there are `n` vertices.
+    - Removing one edge from the spanning tree make the graph disconnected (i.e. spanning tree). Spanning tree is minimally connected.
+    - Spanning tree is maxmally acyclic.
+- `Minimumm spanning tree` among all the spanning trees the one with minimum cost on edges is called minimum spanning tree.
+- Algo to design Min. Spanning Tree:
+    - `Prims` Algo
+    - `Kruskal` Algo
+    - Both are `Greedy Algo`
+#### Kruskal's Algo (Pending)
+- In kruskal's algo keep chossing the `edge` with minimum cast until we covered all the vertices.
+- In interviews we can be asked about the order in which we picked the edges so keep in mind.
+- For applying Kruskal's algo we need to have knowledge of DSU- `Disjoint Set Union`
+#### DSU (Pending)
+- DSU is a Data Structure
+
+#### Prim's Algo
+- We pick a `node` to start and keep chosing edge with minimum cost to move to other node and stop when all the nodes are covered.
