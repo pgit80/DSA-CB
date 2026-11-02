@@ -48,7 +48,7 @@
         5. add the unvisited neighbours of the vertex in the queue
 - ### DFS
     - We traverse on branch fully before going to next branch
-    - Use use `Stack` in DFS.
+    - Use `Stack` in DFS.
     - DFS also can detect cycle in graph.
     - Steps are same as BFS:
          1. Remove the vertex from the Stack
@@ -100,6 +100,12 @@
         - Add to priority queue.
     - We can be asked the cost of the path and path as well.
     - Dijkstra algo can also detect cycle in the graph but take more resources than BFT/DFT
+    ### Bellman Ford Algo:- (pending)
+    - Where there are `-ve` edge in the graph there dijkstra can't be applied. 
+    - In that case we use Bellman Ford Algo.
+    - Bellman Ford algo comes with problem of identifying
+        - -ve edge cycle
+        - how to apply bellman ford on -ve edge cycle
 
 ## Spanning Tree
 - A spanning tree is subset of graph which has all the vertices covered with minimum possible edges.
